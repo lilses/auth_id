@@ -1,5 +1,5 @@
 
-import 'package:auth_id/auth_id_model.dart';
+import 'package:auth_id/auth_id.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 
