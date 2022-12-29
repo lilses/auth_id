@@ -22,12 +22,32 @@ class AuthIdRepo {
 
   Future<void> makeNew() async {
     final authId = await AuthId.create();
-    controller.sink.add(AuthIdState.some(authId));
+    const chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+    final r = Random();
+    final message = utf8.encode(List.generate(10, (index) => chars[r.nextInt(chars.length)]).join());
+    final signature  = authId.sign(message);
+    final walletRequest = WalletRequest(
+        message: message,
+        publicKey: authId.publicKey,
+        signature: signature,
+        networkId: 1
+    );
+    controller.sink.add(AuthIdState.some(authId,walletRequest));
   }
 
   restore(EncryptedAuthId encryptedAuthId, String password) async {
     final authId = await AuthId.restore(encryptedAuthId, password);
-    controller.sink.add(AuthIdState.some(authId));
+    const chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+    final r = Random();
+    final message = utf8.encode(List.generate(10, (index) => chars[r.nextInt(chars.length)]).join());
+    final signature  = authId.sign(message);
+    final walletRequest = WalletRequest(
+        message: message,
+        publicKey: authId.publicKey,
+        signature: signature,
+        networkId: 1
+    );
+    controller.sink.add(AuthIdState.some(authId, walletRequest));
   }
 
   // AuthId? get(){

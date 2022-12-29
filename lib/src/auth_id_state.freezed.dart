@@ -19,19 +19,19 @@ mixin _$AuthIdState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() none,
-    required TResult Function(AuthId authId) some,
+    required TResult Function(AuthId authId, WalletRequest walletRequest) some,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? none,
-    TResult? Function(AuthId authId)? some,
+    TResult? Function(AuthId authId, WalletRequest walletRequest)? some,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? none,
-    TResult Function(AuthId authId)? some,
+    TResult Function(AuthId authId, WalletRequest walletRequest)? some,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -117,7 +117,7 @@ class _$_None with DiagnosticableTreeMixin implements _None {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() none,
-    required TResult Function(AuthId authId) some,
+    required TResult Function(AuthId authId, WalletRequest walletRequest) some,
   }) {
     return none();
   }
@@ -126,7 +126,7 @@ class _$_None with DiagnosticableTreeMixin implements _None {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? none,
-    TResult? Function(AuthId authId)? some,
+    TResult? Function(AuthId authId, WalletRequest walletRequest)? some,
   }) {
     return none?.call();
   }
@@ -135,7 +135,7 @@ class _$_None with DiagnosticableTreeMixin implements _None {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? none,
-    TResult Function(AuthId authId)? some,
+    TResult Function(AuthId authId, WalletRequest walletRequest)? some,
     required TResult orElse(),
   }) {
     if (none != null) {
@@ -185,7 +185,7 @@ abstract class _$$_SomeCopyWith<$Res> {
   factory _$$_SomeCopyWith(_$_Some value, $Res Function(_$_Some) then) =
       __$$_SomeCopyWithImpl<$Res>;
   @useResult
-  $Res call({AuthId authId});
+  $Res call({AuthId authId, WalletRequest walletRequest});
 }
 
 /// @nodoc
@@ -199,12 +199,17 @@ class __$$_SomeCopyWithImpl<$Res>
   @override
   $Res call({
     Object? authId = null,
+    Object? walletRequest = null,
   }) {
     return _then(_$_Some(
       null == authId
           ? _value.authId
           : authId // ignore: cast_nullable_to_non_nullable
               as AuthId,
+      null == walletRequest
+          ? _value.walletRequest
+          : walletRequest // ignore: cast_nullable_to_non_nullable
+              as WalletRequest,
     ));
   }
 }
@@ -212,14 +217,16 @@ class __$$_SomeCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Some with DiagnosticableTreeMixin implements _Some {
-  const _$_Some(this.authId);
+  const _$_Some(this.authId, this.walletRequest);
 
   @override
   final AuthId authId;
+  @override
+  final WalletRequest walletRequest;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthIdState.some(authId: $authId)';
+    return 'AuthIdState.some(authId: $authId, walletRequest: $walletRequest)';
   }
 
   @override
@@ -227,7 +234,8 @@ class _$_Some with DiagnosticableTreeMixin implements _Some {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'AuthIdState.some'))
-      ..add(DiagnosticsProperty('authId', authId));
+      ..add(DiagnosticsProperty('authId', authId))
+      ..add(DiagnosticsProperty('walletRequest', walletRequest));
   }
 
   @override
@@ -235,11 +243,13 @@ class _$_Some with DiagnosticableTreeMixin implements _Some {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Some &&
-            (identical(other.authId, authId) || other.authId == authId));
+            (identical(other.authId, authId) || other.authId == authId) &&
+            (identical(other.walletRequest, walletRequest) ||
+                other.walletRequest == walletRequest));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, authId);
+  int get hashCode => Object.hash(runtimeType, authId, walletRequest);
 
   @JsonKey(ignore: true)
   @override
@@ -251,29 +261,29 @@ class _$_Some with DiagnosticableTreeMixin implements _Some {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() none,
-    required TResult Function(AuthId authId) some,
+    required TResult Function(AuthId authId, WalletRequest walletRequest) some,
   }) {
-    return some(authId);
+    return some(authId, walletRequest);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? none,
-    TResult? Function(AuthId authId)? some,
+    TResult? Function(AuthId authId, WalletRequest walletRequest)? some,
   }) {
-    return some?.call(authId);
+    return some?.call(authId, walletRequest);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? none,
-    TResult Function(AuthId authId)? some,
+    TResult Function(AuthId authId, WalletRequest walletRequest)? some,
     required TResult orElse(),
   }) {
     if (some != null) {
-      return some(authId);
+      return some(authId, walletRequest);
     }
     return orElse();
   }
@@ -311,9 +321,11 @@ class _$_Some with DiagnosticableTreeMixin implements _Some {
 }
 
 abstract class _Some implements AuthIdState {
-  const factory _Some(final AuthId authId) = _$_Some;
+  const factory _Some(final AuthId authId, final WalletRequest walletRequest) =
+      _$_Some;
 
   AuthId get authId;
+  WalletRequest get walletRequest;
   @JsonKey(ignore: true)
   _$$_SomeCopyWith<_$_Some> get copyWith => throw _privateConstructorUsedError;
 }

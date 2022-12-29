@@ -8,5 +8,5 @@ part 'auth_id_state.freezed.dart';
 @freezed
 class AuthIdState with _$AuthIdState {
   const factory AuthIdState.none() = _None;
-  const factory AuthIdState.some(AuthId authId) = _Some;
+  const factory AuthIdState.some(AuthId authId, WalletRequest walletRequest) = _Some;
 }

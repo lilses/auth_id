@@ -38,12 +38,11 @@ class AuthIdBloc extends Cubit<AuthIdState> {
   void subscribe() {
     encryptedAuthIdSubscription = encryptedAuthIdRepo.items.listen(
           (items) {
-            print("beauty90");
-
             items.map(
             none: (none){},
             loading: (loading){},
             some: (some){
+
               if (some.encryptedAuthId == null){
                 authIdRepo.makeNew();
               } else {
@@ -56,7 +55,7 @@ class AuthIdBloc extends Cubit<AuthIdState> {
     authIdSubscription = authIdRepo.items.listen((event) {
       event.map(
           none: (none) => emit(const AuthIdState.none()),
-          some: (some) => emit(AuthIdState.some(some.authId))
+          some: (some) => emit(AuthIdState.some(some.authId, some.walletRequest))
       );
     },
       onError: (error) => print("STREAM ERROR: $error"),
