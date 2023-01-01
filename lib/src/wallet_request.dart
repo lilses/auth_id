@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:json_annotation/json_annotation.dart';
 
 /// This allows the `User` class to access private members in
@@ -20,6 +22,12 @@ class WalletRequest {
         required this.signature,
         required this.message,
         required this.networkId});
+
+  Map<String, dynamic> headers(){
+    return {
+      "auth_id":jsonEncode(toJson()),
+    };
+  }
 
   /// A necessary factory constructor for creating a new User instance
   /// from a map. Pass the map to the generated `_$UserFromJson()` constructor.

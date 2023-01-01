@@ -20,8 +20,12 @@ class AuthIdBloc extends Cubit<AuthIdState> {
   final AuthIdRepo authIdRepo;
   final String password;
 
+
   late final StreamSubscription encryptedAuthIdSubscription;
   late final StreamSubscription authIdSubscription;
+
+  bool _encryptedAuthIdSome = false;
+
 
 
   AuthIdBloc({required this.encryptedAuthIdRepo, required this.authIdRepo, required this.password}) : super(const AuthIdState.none()){
@@ -42,11 +46,13 @@ class AuthIdBloc extends Cubit<AuthIdState> {
             none: (none){},
             loading: (loading){},
             some: (some){
-
-              if (some.encryptedAuthId == null){
-                authIdRepo.makeNew();
-              } else {
-                authIdRepo.restore(some.encryptedAuthId!, password);
+              if (_encryptedAuthIdSome == false){
+                _encryptedAuthIdSome = true;
+                if (some.encryptedAuthId == null){
+                  authIdRepo.makeNew();
+                } else {
+                  authIdRepo.restore(some.encryptedAuthId!, password);
+                }
               }
             });
       },
