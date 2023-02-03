@@ -2,6 +2,7 @@
 import 'package:auth_id/auth_id.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:types/types.dart';
 
 part 'auth_id_state.freezed.dart';
 

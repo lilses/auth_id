@@ -1,13 +1,12 @@
 
 import 'dart:async';
 import 'dart:convert';
+import 'package:types/types.dart';
 
 import 'package:auth_id/auth_id.dart';
 import 'package:encrypted_auth_id/encrypted_auth_id.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:math';
-
-import 'wallet_request.dart';
 
 
 // const chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';

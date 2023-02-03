@@ -17,6 +17,8 @@ dependencies:
   flutter_secure_storage: ^6.0.0
   encrypted_auth_id:
     path: ../encrypted_auth_id
+  types:
+    path: ../types
 dev_dependencies:
   gen_api:
     path: ../gen_api
