@@ -6,10 +6,10 @@ import 'dart:convert';
 import 'package:auth_id/auth_id.dart';
 import 'package:encrypted_auth_id/encrypted_auth_id.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:types/types.dart';
 import 'dart:math';
 
 import 'auth_id_model.dart';
-import 'wallet_request.dart';
 
 
 const chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
