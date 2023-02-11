@@ -49,6 +49,18 @@ class AuthIdRepo {
     controller.sink.add(AuthIdState.some(authId, walletRequest));
   }
 
+  Future<WalletRequest> sign(AuthId authId) async {
+    final r = Random();
+    final message = utf8.encode(List.generate(10, (index) => chars[r.nextInt(chars.length)]).join());
+    final signature  = authId.sign(message);
+    return WalletRequest(
+        message: message,
+        publicKey: authId.publicKey,
+        signature: signature,
+        networkId: 1
+    );
+  }
+
   // AuthId? get(){
   //   return state.map(none: (none){
   //     return null;
